@@ -1,0 +1,6 @@
+data:
+  url: https://storage.yandexcloud.net/sledobot.ru/Airbnb_Data.csv
+
+defaults:
+  - data: airbnb
+  - _self_
