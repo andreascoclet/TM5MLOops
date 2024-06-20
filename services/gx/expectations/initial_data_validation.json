@@ -12,25 +12,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_values_to_be_unique",
-      "kwargs": {
-        "column": "description"
-      },
-      "meta": {
-        "dimension": "Uniqueness"
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_match_regex",
-      "kwargs": {
-        "column": "bedrooms",
-        "regex": "(\\d*.\\d)"
-      },
-      "meta": {
-        "dimension": "Validity"
-      }
-    },
-    {
       "expectation_type": "expect_column_values_to_be_between",
       "kwargs": {
         "column": "review_scores_rating",

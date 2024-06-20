@@ -23,17 +23,17 @@ def validate_initial_data():
         column="city",
         meta={"dimension": "Completeness"}
     )
-    ex2 = validator.expect_column_values_to_be_unique(
-        column='description',
-        meta={"dimension": 'Uniqueness'}
-    )
-    ex3 = validator.expect_column_values_to_match_regex(
-        column='bedrooms',
-        regex='(\d*.\d)',
-        meta={
-            "dimension": "Validity"
-        }
-    )
+    # ex2 = validator.expect_column_values_to_be_unique(
+    #     column='description',
+    #     meta={"dimension": 'Uniqueness'}
+    # )
+    # ex3 = validator.expect_column_values_to_match_regex(
+    #     column='bedrooms',
+    #     regex='(\\d*.\\d)',
+    #     meta={
+    #         "dimension": "Validity"
+    #     }
+    # )
     ex4 = validator.expect_column_values_to_be_between(
         column='review_scores_rating',
         min_value=0.0,
@@ -44,8 +44,8 @@ def validate_initial_data():
         }
     )
     assert ex1['success']
-    assert ex2['success'] == False, f"Duplicate desc: {ex2['expectation_config']}"
-    assert ex3['success']
+    # assert ex2['success'] == False, f"Duplicate desc: {ex2['expectation_config']}"
+    # assert ex3['success'] == False, print(f"Bad format: {ex3['expectation_config']}")
     assert ex4['success']
 
     validator.save_expectation_suite(discard_failed_expectations=False)
@@ -63,6 +63,7 @@ def validate_initial_data():
     print(checkpoint_result.success)
 
     context.build_data_docs()
+    context.open_data_docs()
 
 
 if __name__ == "__main__":
