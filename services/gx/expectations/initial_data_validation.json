@@ -1,0 +1,50 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "initial_data_validation",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "city"
+      },
+      "meta": {
+        "dimension": "Completeness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "description"
+      },
+      "meta": {
+        "dimension": "Uniqueness"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "bedrooms",
+        "regex": "(\\d*.\\d)"
+      },
+      "meta": {
+        "dimension": "Validity"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "review_scores_rating",
+        "max_value": 101.0,
+        "min_value": 0.0,
+        "mostly": 0.9
+      },
+      "meta": {
+        "dimension": "Consistency"
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.16"
+  }
+}
