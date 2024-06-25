@@ -1,52 +1,48 @@
-@echo off
-REM Exit immediately if a command exits with a non-zero status
-setlocal enabledelayedexpansion
-set "errorlevel=0"
+# Exit immediately if a command exits with a non-zero status
+$ErrorActionPreference = "Stop"
 
-REM Activate the virtual environment
-call ..\venv\Scripts\activate
+# Activate the virtual environment
+& ..\venv\Scripts\Activate.ps1
 
-REM Take a data sample
-echo Sampling data...
-python src\data.py
-if %errorlevel% neq 0 (
-    echo Failed to sample data.
-    exit /b 1
-)
+# Take a data sample
+Write-Output "Sampling data..."
+python ..\src\data.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "Failed to sample data."
+    exit 1
+}
 
-REM Validate the data sample
-echo Validating data...
-python src\validate.py
-if %errorlevel% neq 0 (
-    echo Data validation failed. Data will not be versioned.
-    exit /b 1
-)
-echo Data validation passed.
+# Validate the data sample
+Write-Output "Validating data..."
+python ..\src\validate.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "Data validation failed. Data will not be versioned."
+    exit 1
+}
+Write-Output "Data validation passed."
 
-REM Version the data sample
-echo Versioning data...
-git commit -m "Add sampled data %date% %time% and version with DVC"
-if %errorlevel% neq 0 (
-    echo Git commit failed.
-    exit /b 1
-)
+# Version the data sample
+Write-Output "Versioning data..."
+git commit -m "Add sampled data $(Get-Date -Format "yyyy-MM-dd HH:mm:ss") and version with DVC"
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "Git commit failed."
+    exit 1
+}
 
 git tag -a "v1.1" -m "add data version v1.1"
-if %errorlevel% neq 0 (
-    echo Git tag failed.
-    exit /b 1
-)
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "Git tag failed."
+    exit 1
+}
 
 dvc push
-if %errorlevel% neq 0 (
-    echo DVC push failed.
-    exit /b 1
-)
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "DVC push failed."
+    exit 1
+}
 
 git push
-if %errorlevel% neq 0 (
-    echo Git push failed.
-    exit /b 1
-)
-
-endlocal
+if ($LASTEXITCODE -ne 0) {
+    Write-Output "Git push failed."
+    exit 1
+}

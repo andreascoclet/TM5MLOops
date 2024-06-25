@@ -15,13 +15,76 @@
       "expectation_type": "expect_column_values_to_be_between",
       "kwargs": {
         "column": "review_scores_rating",
-        "max_value": 101.0,
-        "min_value": 0.0,
-        "mostly": 0.9
+        "max_value": 100,
+        "min_value": 0
       },
-      "meta": {
-        "dimension": "Consistency"
-      }
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "log_price"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "log_price",
+        "max_value": 10,
+        "min_value": 0
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "accommodates"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "accommodates",
+        "max_value": 16,
+        "min_value": 1
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "bathrooms",
+        "max_value": 10,
+        "min_value": 0
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "bedrooms",
+        "max_value": 10,
+        "min_value": 0
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "beds",
+        "max_value": 20,
+        "min_value": 0
+      },
+      "meta": {}
     }
   ],
   "ge_cloud_id": null,
